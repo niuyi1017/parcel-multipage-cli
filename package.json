@@ -1,0 +1,25 @@
+{
+  "name": "parcel-multipage-cli",
+  "version": "0.0.1",
+  "description": "快速构建基于 parcel 的多页应用前端工程化开发环境",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niuyi1017/parcel-multipage-cli.git"
+  },
+  "bin": {
+    "pmp-cli": "./bin/www.js"
+  },
+  "author": "niuxinyu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/niuyi1017/parcel-multipage-cli/issues"
+  },
+  "homepage": "https://github.com/niuyi1017/parcel-multipage-cli#readme",
+  "dependencies": {
+    "commander": "^5.0.0"
+  }
+}
