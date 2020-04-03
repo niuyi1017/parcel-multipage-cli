@@ -1,32 +1,33 @@
 {
-  "name": "testtest",
-  "version": "1.1.1",
-  "description": "desdfadfasdfas",
+  "name": "parcel-multipage-cli",
+  "version": "0.0.1",
+  "description": "快速构建基于 parcel 的多页应用前端工程化开发环境",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": " parcel serve src/pages/*/*/*.html --no-cache ",
-    "build": "parcel build src/pages/*/*/*.html --no-cache -d build  --no-content-hash --no-minify  --no-source-maps --detailed-report"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niuyi1017/parcel-multipage-cli.git"
+  },
+  "bin": {
+    "pmp-cli": "./bin/www.js"
   },
   "author": "niuxinyu",
   "license": "MIT",
-  "dependencies": {
-    "@babel/runtime": "^7.9.2",
-    "axios": "^0.19.2",
-    "babel-polyfill": "^6.26.0",
-    "chalk": "^4.0.0",
-    "swiper": "^5.3.6",
-    "which": "^2.0.2"
+  "bugs": {
+    "url": "https://github.com/niuyi1017/parcel-multipage-cli/issues"
   },
-  "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-transform-runtime": "^7.9.0",
-    "autoprefixer": "^9.7.5",
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "postcss-flexbugs-fixes": "^4.2.0",
-    "postcss-modules": "^1.5.0",
-    "postcss-preset-env": "^6.7.0",
-    "stylus": "^0.54.7"
+  "homepage": "https://github.com/niuyi1017/parcel-multipage-cli#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chalk": "^4.0.0",
+    "commander": "^5.0.0",
+    "download-git-repo": "^3.0.2",
+    "fs-extra": "^9.0.0",
+    "inquirer": "^7.1.0",
+    "ncp": "^2.0.0",
+    "ora": "^4.0.3",
+    "which": "^2.0.2"
   }
 }

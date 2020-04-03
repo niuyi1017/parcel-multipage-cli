@@ -8,8 +8,21 @@ const { downloadDirectory } = require('./constants');
 const path = require('path')
 const fs = require('fs-extra');
 
-let ncp = require('ncp')
-ncp = promisify(ncp)
+// const runCmdPromise   = require('./install')
+// let runCmd = require('./install')
+
+// async function runCmdPromise() {
+//   return new Promise((resolve, reject) => {
+//     runCmd()
+//     resolve(() => {
+//       console.log('install finished')
+//     })
+//   }) 
+// } 
+// runCmd = promisify(runCmd)
+// let ncp = require('ncp')
+// ncp = promisify(ncp)
+
 
 let downloadGitRepo = require('download-git-repo')
 downloadGitRepo = promisify(downloadGitRepo)
@@ -21,6 +34,15 @@ const waitFnloading = (fn, message) => async(...args) => {
   const result = await fn(...args)
   spinner.succeed()
   return result;
+}
+
+async function copyFiles (ori,des) {
+  try {
+    await fs.copy(ori, des)
+    console.log('success!')
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 function selectedBranch(templateTypes,templateName) {
@@ -79,7 +101,7 @@ module.exports = async (projectName) => {
   const { name }  = await Inquirer.prompt({
     name: 'name',
     type: 'input',
-    message: `please input project's name (${projectName})`,
+    message: `please input project's name: (${projectName})`,
   })
   packageUser.name = name ? name : projectName
 
@@ -125,7 +147,7 @@ module.exports = async (projectName) => {
   const { confirmPackage }  = await Inquirer.prompt({
     name: 'confirmPackage',
     type: 'confirm',
-    message: `Is this OK? (y/N) `
+    message: `Is this OK? `
   })
 
   
@@ -155,7 +177,9 @@ module.exports = async (projectName) => {
     // console.log('tags', tags)
 
     const result = await waitFnloading(download, 'fetching template')(templateBranch)
-    ncp(result, path.resolve(projectName))
+    // ncp(result, path.resolve(projectName))
+    await copyFiles(result, path.resolve(projectName))
+
     const packageObj = fs.readJsonSync(`./${projectName}/package.json`)
     packageObj.name = packageUser.name
     packageObj.version = packageUser.version
@@ -163,8 +187,10 @@ module.exports = async (projectName) => {
     packageObj.author = packageUser.author
     packageObj.license = packageUser.license
     packageObj.scripts.test = packageUser.scripts.test
-    fs.writeJsonSync('./package.json', packageObj)
+    fs.writeJsonSync(`./${projectName}/package.json`, packageObj)
     
+    // await runCmdPromise()
+    // await runCmd()
     
   }
   
