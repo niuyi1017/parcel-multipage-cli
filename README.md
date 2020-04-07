@@ -24,4 +24,4 @@
   npm run build
 ```
 ### 使用说明
-parcel-multipage-cli（简称pmp-cli）能够帮助您快速初始化一个基于parcel的前端工程化项目。提供模块热重载、css预处理、babel编译等功能服务，让您专注与业务代码的书写而不用关心工程化的问题。
+parcel-multipage-cli（简称pmp-cli）能够帮助您快速初始化一个基于parcel的前端工程化项目。提供模块热重载、css预处理、babel编译等功能服务，让您专注于业务代码的书写而不用关心工程化的问题。
