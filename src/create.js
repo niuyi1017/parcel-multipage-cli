@@ -1,6 +1,7 @@
 const axios = require('axios')
 const ora = require('ora')
 const Inquirer = require('inquirer')
+const chalk = require('chalk');
 
 const { promisify } = require('util');
 const { downloadDirectory } = require('./constants');
@@ -39,15 +40,15 @@ const waitFnloading = (fn, message) => async(...args) => {
 async function copyFiles (ori,des) {
   try {
     await fs.copy(ori, des)
-    console.log('success!')
+    console.log(`${chalk.green('done')}`)
   } catch (err) {
-    console.error(err)
+    console.error(chalk.bgRed(err))
   }
 }
 
 function selectedBranch(templateTypes,templateName) {
   for (let i = 0; i < templateTypes.length; i++){
-    console.log(templateTypes[i])
+    // console.log(templateTypes[i])
     if (templateTypes[i].name == templateName)
       return templateTypes[i].branch
   }
@@ -59,7 +60,7 @@ let templateTypes = [
     branch: 'full'
   },
   {
-    name: "just parcel-multipage  ",
+    name: "just parcel-multipage ",
     branch: 'simple'
   },
 ]
@@ -141,7 +142,7 @@ module.exports = async (projectName) => {
     
   })
   packageUser.scripts.test = test ? test : "echo \"Error: no test specified\" && exit 1"
-  console.log('About to write to D:\projects\testInit\package.json:')
+  console.log(`About to write to ${projectName}/package.json`)
   console.log(packageUser)
 
   const { confirmPackage }  = await Inquirer.prompt({
@@ -188,7 +189,11 @@ module.exports = async (projectName) => {
     packageObj.license = packageUser.license
     packageObj.scripts.test = packageUser.scripts.test
     fs.writeJsonSync(`./${projectName}/package.json`, packageObj)
-    
+    console.log()
+    console.log('-------------------------------------------')
+    console.log()
+    console.log(chalk.green(`  $  cd ${projectName}`))
+    console.log(chalk.green(`  $  npm run dev`))
     // await runCmdPromise()
     // await runCmd()
     
