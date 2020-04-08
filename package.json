@@ -1,6 +1,6 @@
 {
   "name": "parcel-multipage-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "快速构建基于 parcel 的多页应用前端工程化开发环境",
   "main": "./src/main.js",
   "scripts": {
