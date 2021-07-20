@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/niuyi1017/parcel-multipage-cli#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chalk": "^4.0.0",
     "commander": "^5.0.0",
     "download-git-repo": "^3.0.2",
